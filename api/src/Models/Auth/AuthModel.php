@@ -8,7 +8,6 @@ class AuthModel {
         $this->db = $db;
     }
 
-    // Busca un usuario y trae tambien el nombre de su rol
     public function buscarPorUsuario($usuario) {
         try {
             $stmt = $this->db->prepare(
