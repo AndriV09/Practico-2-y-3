@@ -58,7 +58,6 @@ INSERT INTO AUTORES (id_autor, nombre_autor) VALUES
 (2, 'Antoine de Saint-Exupéry'),
 (3, 'Gabriel García Márquez');
 
--- Los tres libros que en el Práctico 1 estaban escritos a mano en el HTML
 INSERT INTO ARTICULOS (titulo, descripcion, imagen, disponible, id_categoria, id_autor, id_usuario) VALUES
 ('Harry Potter y la piedra filosofal', 'Un niño descubre que es mago y comienza su primer año en Hogwarts.', 'dist/assets/harry-potter.webp', 1, 1, 1, 1),
 ('El Principito', 'Un piloto perdido en el desierto conoce a un pequeño príncipe de otro planeta.', 'dist/assets/el-principito.webp', 1, 1, 2, 1),
