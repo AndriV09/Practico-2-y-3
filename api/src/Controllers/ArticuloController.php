@@ -14,9 +14,6 @@ class ArticuloController {
         }
     }
 
-    // ---------- Rutas publicas (las usa la Landing Page) ----------
-
-    // GET /api/articulos
     public function listar() {
         $articuloModel = new ArticuloModel($this->db);
         $articulos = $articuloModel->listar();
@@ -29,7 +26,6 @@ class ArticuloController {
         $this->responder(200, 'ok', 'Listado de artículos', $articulos);
     }
 
-    // GET /api/articulos/:id
     public function porId($id) {
         if (!is_numeric($id) || $id <= 0) {
             $this->responder(400, 'error', 'El ID debe ser un número válido');
@@ -60,9 +56,7 @@ class ArticuloController {
         $this->responder(200, 'ok', 'Listado de categorías', $categorias);
     }
 
-    // ---------- Rutas de administracion (solo rol Administrador) ----------
 
-    // POST /api/articulos
     public function crear() {
         if (!$this->esAdmin()) {
             return;
@@ -99,7 +93,6 @@ class ArticuloController {
         $this->responder(201, 'ok', 'Artículo creado', ['id_articulo' => $idNuevo]);
     }
 
-    // PUT /api/articulos/:id
     public function actualizar($id) {
         if (!$this->esAdmin()) {
             return;
@@ -147,7 +140,6 @@ class ArticuloController {
         $this->responder(200, 'ok', 'Artículo modificado');
     }
 
-    // DELETE /api/articulos/:id
     public function eliminar($id) {
         if (!$this->esAdmin()) {
             return;
@@ -168,9 +160,7 @@ class ArticuloController {
         $this->responder(200, 'ok', 'Artículo eliminado');
     }
 
-    // ---------- Funciones internas ----------
 
-    // Seguridad: corta el pedido si no hay sesion o si el rol no es Administrador
     private function esAdmin() {
         if (empty($_SESSION['usuario_id'])) {
             $this->responder(401, 'error', 'Debe iniciar sesión');
@@ -185,7 +175,6 @@ class ArticuloController {
         return true;
     }
 
-    // Lee y valida el JSON del formulario. Devuelve false si hay algun dato mal.
     private function leerDatos() {
         $datos = json_decode(file_get_contents('php://input'), true);
         if (!is_array($datos)) {
