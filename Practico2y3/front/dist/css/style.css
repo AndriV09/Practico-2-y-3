@@ -1,0 +1,130 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2b3a4a;
+}
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> a217372 (cambiosfinales)
+.titulo-seccion {
+    color: #203554;
+    font-weight: 600;
+}
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> a217372 (cambiosfinales)
+.texto-oscuro {
+    color: #4a5c6d !important;
+}
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> a217372 (cambiosfinales)
+.boton-personalizado-azul {
+    background-color: #538df6 !important;
+    border-color: #538df6 !important;
+}
+
+.boton-personalizado-azul:hover {
+    background-color: #3b74db !important;
+    border-color: #3b74db !important;
+}
+
+<<<<<<< HEAD
+
+.seccion-banner {
+    background-image: url('/front/dist/assets/imagebibliotec.jpeg'); 
+=======
+.seccion-banner {
+    background-image: url('../assets/banner-biblioteca.jpeg');
+>>>>>>> a217372 (cambiosfinales)
+    background-color: #2b3a4a;
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+<<<<<<< HEAD
+
+.tarjeta-beneficio {
+    background-color: #ebf3ff; 
+=======
+.tarjeta-beneficio {
+    background-color: #ebf3ff;
+>>>>>>> a217372 (cambiosfinales)
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-beneficio:hover {
+    transform: translateY(-2px);
+}
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> a217372 (cambiosfinales)
+.tarjeta-libro {
+    overflow: hidden;
+}
+
+.imagen-libro {
+    height: 380px;
+    object-fit: cover;
+<<<<<<< HEAD
+    background-color: #e9ecef;
+}
+
+
+=======
+    object-position: top;
+    background-color: #e9ecef;
+}
+
+>>>>>>> a217372 (cambiosfinales)
+.seccion-nosotros {
+    background-color: #ebf3ff;
+}
+
+<<<<<<< HEAD
+
+.fondo-azul-personalizado {
+    background-color: #538df6;
+    height:20vh;
+    align-content: center;
+}
+
+.textof {
+
+        text-align: center;
+    
+=======
+.fondo-azul-personalizado {
+    background-color: #538df6;
+}
+
+.textof {
+    text-align: center;
+    color: #14233a;
+}
+
+/* ---------- Login ---------- */
+
+.pagina-login {
+    min-height: 100vh;
+    background-color: #ebf3ff;
+    display: flex;
+    align-items: center;
+}
+
+.tarjeta-login {
+    max-width: 420px;
+    margin: 0 auto;
+>>>>>>> a217372 (cambiosfinales)
+}
