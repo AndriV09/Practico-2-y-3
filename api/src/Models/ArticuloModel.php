@@ -8,7 +8,6 @@ class ArticuloModel {
         $this->db = $db;
     }
 
-    // Cantidad de articulos cargados (lo usa /api/estado)
     public function contar() {
         try {
             $stmt = $this->db->query('SELECT COUNT(*) AS total FROM ARTICULOS');
@@ -19,7 +18,6 @@ class ArticuloModel {
         }
     }
 
-    // Todos los articulos con el nombre de su categoria y de su autor
     public function listar() {
         try {
             $stmt = $this->db->query(
@@ -63,7 +61,6 @@ class ArticuloModel {
         }
     }
 
-    // Devuelve el id del autor. Si todavia no existe en AUTORES, lo crea.
     public function obtenerOCrearAutor($nombreAutor) {
         try {
             $stmt = $this->db->prepare('SELECT id_autor FROM AUTORES WHERE nombre_autor = :nombre');
