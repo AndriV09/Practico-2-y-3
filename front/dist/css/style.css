@@ -1,0 +1,81 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2b3a4a;
+}
+
+.titulo-seccion {
+    color: #203554;
+    font-weight: 600;
+}
+
+.texto-oscuro {
+    color: #4a5c6d !important;
+}
+
+.boton-personalizado-azul {
+    background-color: #538df6 !important;
+    border-color: #538df6 !important;
+}
+
+.boton-personalizado-azul:hover {
+    background-color: #3b74db !important;
+    border-color: #3b74db !important;
+}
+
+.seccion-banner {
+    background-image: url('../assets/banner-biblioteca.jpeg');
+    background-color: #2b3a4a;
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.tarjeta-beneficio {
+    background-color: #ebf3ff;
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-beneficio:hover {
+    transform: translateY(-2px);
+}
+
+.tarjeta-libro {
+    overflow: hidden;
+}
+
+.imagen-libro {
+    height: 380px;
+    object-fit: cover;
+    object-position: top;
+    background-color: #e9ecef;
+}
+
+.seccion-nosotros {
+    background-color: #ebf3ff;
+}
+
+.fondo-azul-personalizado {
+    background-color: #538df6;
+}
+
+.textof {
+    text-align: center;
+    color: #14233a;
+}
+
+/* ---------- Login ---------- */
+
+.pagina-login {
+    min-height: 100vh;
+    background-color: #ebf3ff;
+    display: flex;
+    align-items: center;
+}
+
+.tarjeta-login {
+    max-width: 420px;
+    margin: 0 auto;
+}

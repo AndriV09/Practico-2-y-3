@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Biblioteca Virtual</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<!-- El body arranca oculto: dashboard.js lo muestra solo si la sesion es de un Administrador -->
+<body class="panel-admin d-none">
+
+    <nav class="navbar navbar-dark barra-admin">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Panel de Administración</span>
+            <div class="d-flex align-items-center gap-3">
+                <span id="nombre-usuario" class="text-white small"></span>
+                <button id="btn-logout" class="btn btn-sm btn-outline-light text-nowrap">Cerrar sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid flex-grow-1 d-flex flex-column">
+        <div class="row flex-grow-1">
+
+            <aside class="col-md-3 col-lg-2 menu-admin p-3">
+                <ul class="nav nav-pills flex-column gap-1">
+                    <li class="nav-item"><a class="nav-link active" href="#articulos">Artículos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html">Ver sitio público</a></li>
+                </ul>
+            </aside>
+
+            <main class="col-md-9 col-lg-10 p-4">
+                <section id="articulos">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                        <h1 class="h3 mb-0">Artículos de la biblioteca</h1>
+                        <button id="btn-nuevo" class="btn btn-primary">+ Agregar artículo</button>
+                    </div>
+
+                    <div id="alerta-admin" class="alert d-none" role="alert"></div>
+
+                    <div class="card border-0 shadow-sm">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Título</th>
+                                        <th>Autor</th>
+                                        <th>Categoría</th>
+                                        <th>Estado</th>
+                                        <th class="text-end">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-articulos">
+                                    <!-- Se completa desde dashboard.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Formulario para agregar o modificar un articulo -->
+    <div class="modal fade" id="modal-articulo" tabindex="-1" aria-labelledby="titulo-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="form-articulo">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="titulo-modal">Agregar artículo</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="alerta-form" class="alert alert-danger d-none" role="alert"></div>
+                        <input type="hidden" id="id_articulo">
+
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="titulo" maxlength="150" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="autor" class="form-label">Autor</label>
+                            <input type="text" class="form-control" id="autor" maxlength="100" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_categoria" class="form-label">Categoría</label>
+                            <select class="form-select" id="id_categoria" required></select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen</label>
+                            <input type="text" class="form-control" id="imagen" maxlength="255" placeholder="dist/assets/harry-potter.webp">
+                            <div class="form-text">Ruta dentro del proyecto (dist/assets/...) o una dirección que empiece con https://</div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="disponible" checked>
+                            <label class="form-check-label" for="disponible">Disponible</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/components/helpers.js"></script>
+    <script src="../../js/pages/admin/dashboard.js"></script>
+</body>
+</html>

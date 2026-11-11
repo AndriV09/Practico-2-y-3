@@ -1,0 +1,35 @@
+/* Estilos del Dashboard de Administracion: a proposito distinto de la Landing publica */
+
+body.panel-admin {
+    background-color: #f1f3f6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.barra-admin {
+    background-color: #1b2a41;
+}
+
+.menu-admin {
+    background-color: #24364f;
+}
+
+.menu-admin .nav-link {
+    color: #c9d6e8;
+    border-radius: 6px;
+}
+
+.menu-admin .nav-link:hover,
+.menu-admin .nav-link.active {
+    background-color: #538df6;
+    color: #ffffff;
+}
+
+.miniatura-articulo {
+    width: 48px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: #e9ecef;
+}
