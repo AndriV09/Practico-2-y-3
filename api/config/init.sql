@@ -1,12 +1,4 @@
--- ========================================================
--- SCRIPT DE CREACIÓN: BIBLIOTECA VIRTUAL (Prácticos 2 y 3)
--- ========================================================
--- Con Docker se ejecuta solo la primera vez que se crea la base.
--- Sin Docker: entrar a phpMyAdmin, elegir la base de datos y usar "Importar".
-
 SET NAMES utf8mb4;
-
--- 1. CREACIÓN DE TABLAS (DDL)
 
 CREATE TABLE ROLES (
     id_rol INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,27 +29,21 @@ CREATE TABLE ARTICULOS (
     titulo VARCHAR(150) NOT NULL,
     descripcion TEXT NULL,
     imagen VARCHAR(255) NULL,
-    disponible TINYINT(1) NOT NULL DEFAULT 1, -- 1 = Disponible, 0 = No disponible
+    disponible TINYINT(1) NOT NULL DEFAULT 1, 
     id_categoria INT NOT NULL,
     id_autor INT NOT NULL,
-    id_usuario INT NULL, -- administrador que lo registró
+    id_usuario INT NULL, 
     FOREIGN KEY (id_categoria) REFERENCES CATEGORIAS(id_categoria),
     FOREIGN KEY (id_autor) REFERENCES AUTORES(id_autor),
     FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario)
 );
 
--- ========================================================
--- 2. POBLACIÓN DE DATOS (DML - INSERTS)
--- ========================================================
 
 INSERT INTO ROLES (id_rol, nombre_rol) VALUES
 (1, 'Administrador'),
 (2, 'Usuario');
 
--- Usuarios de prueba. La clave NO se guarda en texto: se guarda el hash
--- generado con password_hash() de PHP.
---   admin   / admin    -> Administrador
---   usuario / usuario  -> Usuario
+
 INSERT INTO USUARIOS (usuario, password_hash, nombre, id_rol) VALUES
 ('admin', '$2y$10$kboXncU0gkVwvRTJJHLshu6foRW8aUECUPs5t/R0m1/KPJ422A5vC', 'Administrador', 1),
 ('usuario', '$2y$10$8LU3qfjKiz8WUKnsf.OHv.E6FzwVEIJGpjfzkkmlMKrUnof6KvddS', 'Usuario de prueba', 2);
