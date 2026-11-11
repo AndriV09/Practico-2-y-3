@@ -1,6 +1,3 @@
-// Logica del login: manda usuario y clave, y redirige segun el ROL que devuelve la API.
-
-// Decide a donde va cada rol (las rutas son relativas a dist/pages/login.html)
 function redirigirSegunRol(rol) {
     if (rol === 'Administrador') {
         window.location.href = './admin/dashboard.html';
@@ -10,7 +7,6 @@ function redirigirSegunRol(rol) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Si ya hay sesion iniciada no tiene sentido mostrar el login
     const sesion = await API.request('/sesion');
     if (sesion.status === 'ok') {
         redirigirSegunRol(sesion.data.rol);
