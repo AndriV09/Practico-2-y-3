@@ -1,4 +1,3 @@
-// Logica de la Landing Page: trae los articulos de la API y arma las cards del catalogo.
 document.addEventListener('DOMContentLoaded', async () => {
     const contenedor = document.getElementById('lista-articulos');
     const respuesta = await API.request('/articulos');
