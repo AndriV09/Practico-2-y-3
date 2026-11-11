@@ -1,8 +1,4 @@
-// front/dist/js/api.js
-// El mensajero: el HTML nunca habla con PHP directo. Pasa por acá.
-
 const API = {
-    // En Docker: http://localhost:8080/api
     urlBase: '/api',
 
     async request(endpoint, method = 'GET', data = null) {
@@ -13,7 +9,6 @@ const API = {
             headers: { 'Content-Type': 'application/json' }
         };
 
-        // GET no lleva body. POST/PUT sí.
         if (data) {
             opciones.body = JSON.stringify(data);
         }
