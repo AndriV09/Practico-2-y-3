@@ -8,7 +8,6 @@ class EnvLoader {
         $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         foreach ($lines as $line) {
             $line = trim($line);
-            // Ignorar comentarios y líneas vacías (tras trim)
             if ($line === '' || strpos($line, '#') === 0) continue;
 
             $parts = explode('=', $line, 2);
@@ -16,12 +15,9 @@ class EnvLoader {
 
             $name = trim($parts[0]);
             $value = trim($parts[1]);
-            // BOM UTF-8 en la primera clave del archivo
             $name = preg_replace('/^\xEF\xBB\xBF/', '', $name);
             if ($name === '') continue;
 
-            // Si el proceso ya tiene un valor no vacío (Docker, Apache SetEnv, etc.), no pisarlo.
-            // Si existe pero está vacío, sí cargar desde .env — sin eso B2_* suele fallar aunque el .env esté bien.
             $current = '';
             if (array_key_exists($name, $_ENV)) {
                 $current = (string) $_ENV[$name];
