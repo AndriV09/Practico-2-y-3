@@ -1,4 +1,3 @@
-// Pagina del rol Usuario: si no hay sesion vuelve al login.
 document.addEventListener('DOMContentLoaded', async () => {
     const sesion = await API.request('/sesion');
 
