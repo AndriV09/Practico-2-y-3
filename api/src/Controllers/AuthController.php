@@ -14,9 +14,7 @@ class AuthController {
         }
     }
 
-    // POST /api/login
     public function login() {
-        // 1. Leemos el JSON que mando api.js
         $datos = json_decode(file_get_contents('php://input'), true);
         if (!is_array($datos)) {
             $datos = [];
@@ -34,11 +32,9 @@ class AuthController {
             return;
         }
 
-        // 2. Le pedimos el usuario al Modelo
         $authModel = new AuthModel($this->db);
         $fila = $authModel->buscarPorUsuario($usuario);
 
-        // 3. Si no existe o el hash no coincide, no hay sesion
         if (!$fila || !password_verify($password, $fila['password_hash'])) {
             http_response_code(401);
             echo json_encode([
@@ -48,7 +44,6 @@ class AuthController {
             return;
         }
 
-        // 4. Login correcto: guardamos la sesion, incluido el ROL
         session_regenerate_id(true);
         $_SESSION['usuario_id'] = (int) $fila['id_usuario'];
         $_SESSION['usuario'] = $fila['usuario'];
@@ -66,7 +61,6 @@ class AuthController {
         ], JSON_UNESCAPED_UNICODE);
     }
 
-    // GET /api/sesion  -> dice quien esta conectado y con que rol
     public function sesion() {
         if (empty($_SESSION['usuario_id'])) {
             http_response_code(401);
@@ -87,7 +81,6 @@ class AuthController {
         ], JSON_UNESCAPED_UNICODE);
     }
 
-    // POST /api/logout
     public function logout() {
         $_SESSION = [];
 
