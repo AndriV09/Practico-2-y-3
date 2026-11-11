@@ -1,11 +1,8 @@
-// Logica del Dashboard: protege la pagina y maneja agregar / modificar / eliminar articulos.
-
-const RAIZ = '../../../';   // como llegar a front/ desde dist/pages/admin/
-let articulos = [];         // ultima lista que devolvio la API
+const RAIZ = '../../../';   
+let articulos = [];         
 let modal = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // ---- 1. Seguridad: solo entra un Administrador con sesion iniciada ----
     const sesion = await API.request('/sesion');
 
     if (sesion.status !== 'ok') {
@@ -18,7 +15,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    // Recien ahora mostramos la pagina
     document.body.classList.remove('d-none');
     document.getElementById('nombre-usuario').textContent =
         (sesion.data.nombre || sesion.data.usuario) + ' (' + sesion.data.rol + ')';
@@ -28,7 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = '../login.html';
     });
 
-    // ---- 2. Articulos ----
     modal = new bootstrap.Modal(document.getElementById('modal-articulo'));
 
     document.getElementById('btn-nuevo').addEventListener('click', abrirFormularioNuevo);
@@ -95,7 +90,6 @@ async function cargarArticulos() {
     }).join('');
 }
 
-// Un solo "escuchador" para todos los botones de la tabla
 function clickEnTabla(evento) {
     const boton = evento.target.closest('button[data-accion]');
     if (!boton) {
@@ -151,7 +145,6 @@ async function guardarArticulo(evento) {
         disponible: document.getElementById('disponible').checked
     };
 
-    // Si hay id es una modificacion (PUT); si no, es un articulo nuevo (POST)
     let respuesta;
     if (id) {
         respuesta = await API.request('/articulos/' + id, 'PUT', datos);
