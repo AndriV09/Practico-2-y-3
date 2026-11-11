@@ -7,8 +7,6 @@ class Database {
     public $conn;
 
     public function __construct() {
-        // Leemos las variables cargadas desde el .env
-        // Si no existe api/.env se usan los mismos datos que tiene el docker-compose.yml
         $this->host = getenv('DB_HOST') ?: 'db';
         $this->db_name = getenv('DB_NAME') ?: 'mi_base_de_datos';
         $this->username = getenv('DB_USER') ?: 'root';
